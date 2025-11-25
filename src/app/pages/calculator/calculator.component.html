@@ -1,9 +1,18 @@
+<!-- Modal Processing -->
+<app-processing-calculation
+  [open]="processingOpen"
+  (closed)="processingOpen = false"
+  (completed)="onProcessingCompleted()"
+></app-processing-calculation>
+
 <!-- Modal Premium -->
 <app-premium-modal
   [open]="premiumOpen"
   (closed)="premiumOpen = false"
   (subscribed)="onSubscribed()"
 ></app-premium-modal>
+
+<!-- Modal Success -->
 <app-success-modal
   [open]="successOpen"
   (closed)="successOpen = false"

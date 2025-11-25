@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { SubscriptionModalComponent } from '../../shared/modals/subscription-modal/subscription-modal.component';
 import { SuccessModalComponent } from '../../shared/modals/success-modal/success-modal.component';
+import { ProcessingCalculationComponent } from '../../shared/modals/processing-calculation/processing-calculation.component';
 
 type Operator = '+' | '-' | 'x' | '÷' | '%';
 
@@ -10,13 +11,14 @@ type Operator = '+' | '-' | 'x' | '÷' | '%';
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [CommonModule, SharedModule, SubscriptionModalComponent, SuccessModalComponent],
+  imports: [CommonModule, SharedModule, SubscriptionModalComponent, SuccessModalComponent, ProcessingCalculationComponent],
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.sass']
 })
 export class CalculatorComponent {
   expression = '';
   display = '0';
+  processingOpen = false;
   premiumOpen = false;
   successOpen = false;
 
@@ -29,7 +31,7 @@ export class CalculatorComponent {
   }
 
   pressOperator(op: Operator) {
-    this.premiumOpen = true;
+    this.processingOpen = true;
     this.commitCurrent();
     if (this.expression.endsWith(' ')) {
       this.expression = this.expression.slice(0, -3);
@@ -43,26 +45,31 @@ export class CalculatorComponent {
   }
 
   negate() {
-    this.premiumOpen = true;
+    this.processingOpen = true;
     if (this.display === '0') return;
     this.display = this.display.startsWith('-') ? this.display.slice(1) : `-${this.display}`;
   }
 
   percent() {
-    this.premiumOpen = true;
+    this.processingOpen = true;
     const val = parseFloat(this.display || '0') / 100;
     this.display = this.toDisplay(val);
   }
 
   openModal() {
-    this.premiumOpen = true;
+    this.processingOpen = true;
     this.cdr.detectChanges();
   }
 
   equals() {
-    this.premiumOpen = true;
+    this.processingOpen = true;
     this.cdr.detectChanges();
-    // La operación se desactiva - solo se abre el modal premium
+    // La operación se desactiva - solo se abre el modal de procesamiento
+  }
+
+  onProcessingCompleted(): void {
+    this.processingOpen = false;
+    this.premiumOpen = true;
   }
 
   onSubscribed() {

@@ -19,12 +19,21 @@ export class SubscriptionModalComponent {
   @Output() closed = new EventEmitter<void>();
   @Output() subscribed = new EventEmitter<void>();
 
+  isProcessing = false;
+
   onOverlayClick(e: MouseEvent): void {
     const t = e.target as HTMLElement | null;
     if (t && t.classList.contains('fixed')) this.closed.emit();
   }
 
   onSubscribeClick(): void {
-    this.subscribed.emit();
+    if (this.isProcessing) return;
+
+    this.isProcessing = true;
+
+    setTimeout(() => {
+      this.subscribed.emit();
+      this.isProcessing = false;
+    }, 2000);
   }
 }

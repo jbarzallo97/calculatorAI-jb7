@@ -1,0 +1,31 @@
+<div
+  *ngIf="open"
+  class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+>
+  <div
+    class="w-full max-w-md rounded-2xl bg-zinc-900/95 border border-white/10 shadow-2xl p-8 text-white relative"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Spinner -->
+    <div class="flex justify-center mb-6">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Título -->
+    <h2 class="text-2xl font-bold text-center mb-4">Processing Calculation</h2>
+
+    <!-- Mensaje de estado -->
+    <p class="text-white/70 text-sm text-center mb-6">{{ currentMessage }}</p>
+
+    <!-- Barra de progreso -->
+    <div class="w-full bg-zinc-800 rounded-full h-2 mb-4 overflow-hidden">
+      <div
+        class="progress-bar h-full bg-brand transition-all duration-300 ease-out"
+        [style.width.%]="progress"
+      ></div>
+    </div>
+
+    <!-- Segundo mensaje -->
+    <p class="text-white/60 text-xs text-center">Analyzing input data</p>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- Template corregido para subscription-modal.component.html -->
+<div
+  *ngIf="open"
+  class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+  (click)="onOverlayClick($event)"
+>
+  <div
+    class="w-full max-w-xl rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl p-8 text-white relative overflow-hidden"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- FONDO CON GLOBO Y ESTRELLAS -->
+    <div class="absolute inset-0 z-0 opacity-60 pointer-events-none">
+      <app-globe-scene></app-globe-scene>
+      <!-- Gradiente opcional para móviles -->
+      <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-zinc-900/90 md:hidden"></div>
+    </div>
+
+    <!-- CONTENIDO DEL MODAL (debe estar encima) -->
+    <div class="relative z-10">
+      <h2 class="text-2xl font-bold">Modal Premium</h2>
+      <p class="text-white/70 mt-2 text-sm">Contenido del modal</p>
+    </div>
+  </div>
+</div>

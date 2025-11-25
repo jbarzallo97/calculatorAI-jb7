@@ -1,0 +1,62 @@
+<!-- Modal Premium -->
+<app-premium-modal [open]="premiumOpen" (closed)="premiumOpen = false"></app-premium-modal>
+
+<div class="min-h-screen bg-black bg-radial-pro flex items-start md:items-center justify-center p-6">
+  <div class="w-full max-w-[460px] space-y-6">
+    <!-- BOTÓN DE PRUEBA PARA ABRIR MODAL -->
+    <button
+      (click)="openModal()"
+      class="w-full py-4 bg-orange-600 hover:bg-orange-500 text-white text-xl font-bold rounded-xl">
+      ABRIR MODAL PREMIUM
+    </button>
+
+    <!-- Encabezado -->
+    <div class="text-center">
+      <div class="text-brand text-xs tracking-widest flex items-center justify-center gap-2">
+        <span class="status-dot"></span>
+        PREMIUM EDITION
+      </div>
+      <h1 class="text-4xl font-bold mt-2">CalcPro AI</h1>
+      <p class="text-white/60 text-sm">Next‑generation computational intelligence</p>
+    </div>
+
+    <!-- Caja calculadora -->
+    <div class="bg-zinc-900/60 rounded-2xl p-5 shadow-glow">
+      <div class="flex items-start justify-between h-16">
+        <div class="text-white/40 text-xs">{{ expression }}</div>
+        <div class="text-5xl font-semibold tabular-nums">{{ display || '0' }}</div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-3 mt-4">
+        <button class="btn" (click)="clearAll()">C</button>
+        <button class="btn" (click)="negate()">±</button>
+        <button class="btn" (click)="percent()">%</button>
+        <button class="btn" (click)="pressOperator('÷')">÷</button>
+
+        <button class="btn" (click)="pressNumber('7')">7</button>
+        <button class="btn" (click)="pressNumber('8')">8</button>
+        <button class="btn" (click)="pressNumber('9')">9</button>
+        <button class="btn" (click)="pressOperator('x')">×</button>
+
+        <button class="btn" (click)="pressNumber('4')">4</button>
+        <button class="btn" (click)="pressNumber('5')">5</button>
+        <button class="btn" (click)="pressNumber('6')">6</button>
+        <button class="btn" (click)="pressOperator('-')">−</button>
+
+        <button class="btn" (click)="pressNumber('1')">1</button>
+        <button class="btn" (click)="pressNumber('2')">2</button>
+        <button class="btn" (click)="pressNumber('3')">3</button>
+        <button class="btn" (click)="pressOperator('+')">+</button>
+
+        <button class="btn col-span-2" (click)="pressNumber('0')">0</button>
+        <button class="btn" (click)="pressNumber('.')">.</button>
+        <button class="btn-eq" (click)="equals()">=</button>
+      </div>
+
+      <div class="mt-5 flex items-center justify-between text-xs text-white/50">
+        <span>v2.4.1</span>
+        <span><span class="status-dot"></span> Cloud Sync Active</span>
+      </div>
+    </div>
+  </div>
+</div>

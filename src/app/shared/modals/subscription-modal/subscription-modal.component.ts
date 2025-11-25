@@ -3,6 +3,8 @@ import {
   EventEmitter,
   Input,
   Output,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GlobeSceneComponent } from '../globe-scene/globe-scene.component';
@@ -14,12 +16,31 @@ import { GlobeSceneComponent } from '../globe-scene/globe-scene.component';
   templateUrl: './subscription-modal.component.html',
   styleUrls: ['./subscription-modal.component.sass'],
 })
-export class SubscriptionModalComponent {
+export class SubscriptionModalComponent implements OnChanges {
   @Input() open = false;
   @Output() closed = new EventEmitter<void>();
   @Output() subscribed = new EventEmitter<void>();
 
   isProcessing = false;
+  showLeftSection = false;
+  showRightSection = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['open'] && changes['open'].currentValue) {
+      // Resetear estados
+      this.showLeftSection = false;
+      this.showRightSection = false;
+
+      // Secuencia de animaciones
+      setTimeout(() => {
+        this.showLeftSection = true;
+      }, 100);
+
+      setTimeout(() => {
+        this.showRightSection = true;
+      }, 600);
+    }
+  }
 
   onOverlayClick(e: MouseEvent): void {
     const t = e.target as HTMLElement | null;

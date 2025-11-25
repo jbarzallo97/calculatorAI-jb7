@@ -25,7 +25,7 @@
     <!-- CONTENIDO DEL MODAL -->
     <div class="relative z-10 p-8 grid md:grid-cols-2 gap-8">
       <!-- Sección izquierda: Características y Precio -->
-      <div class="space-y-6">
+      <div class="space-y-6" [class.fade-in]="showLeftSection" [class.hidden]="!showLeftSection">
         <!-- Icono de corona y título -->
         <div class="flex items-center gap-3">
           <span class="text-3xl">👑</span>
@@ -77,7 +77,7 @@
       </div>
 
       <!-- Sección derecha: Formulario de pago -->
-      <div class="space-y-4">
+      <div class="space-y-4" [class.fade-in]="showRightSection" [class.hidden]="!showRightSection">
         <h3 class="text-xl font-semibold mb-4">Payment Information</h3>
 
         <div class="grid grid-cols-2 gap-4">

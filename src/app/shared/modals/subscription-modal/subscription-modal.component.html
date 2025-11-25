@@ -1,9 +1,9 @@
 <div
   *ngIf="open"
-  class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+  class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start md:items-center justify-center p-4 md:p-6 overflow-y-auto py-4 md:py-6"
 >
   <div
-    class="w-full max-w-5xl rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl text-white relative overflow-hidden"
+    class="w-full max-w-5xl rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl text-white relative overflow-hidden mt-16 md:mt-auto mb-4 md:mb-auto"
     (click)="$event.stopPropagation()"
   >
     <!-- BACKGROUND WITH GLOBE AND STARS -->
@@ -23,7 +23,7 @@
     </button>
 
     <!-- MODAL CONTENT -->
-    <div class="relative z-10 p-8 grid md:grid-cols-2 gap-8">
+    <div class="relative z-10 p-4 md:p-6 lg:p-8 flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8">
       <!-- Left section: Features and Price -->
       <div class="space-y-6" [class.fade-in]="showLeftSection" [class.hidden]="!showLeftSection">
         <!-- Crown icon and title -->

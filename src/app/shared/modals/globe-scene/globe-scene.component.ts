@@ -153,8 +153,8 @@ export class GlobeSceneComponent implements AfterViewInit, OnDestroy {
 
     // 🌍 Archivos a cargar
     const files = [
-      { path: 'assets/geojson/ne-110m/ne_110m_physical/ne_110m_land.json', color: 0xf54a00 },
-      { path: 'assets/geojson/ne-110m/ne_110m_countries.json', color: 0xf54a00 },
+      { path: 'assets/geojson/ne-110m/ne_110m_physical/ne_110m_land.json', color: 0x3b82f6 },
+      { path: 'assets/geojson/ne-110m/ne_110m_countries.json', color: 0x3b82f6 },
     ];
 
     // ⚡ Cargar y añadir cada dataset

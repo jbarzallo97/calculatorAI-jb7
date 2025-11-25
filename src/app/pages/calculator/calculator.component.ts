@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { SubscriptionModalComponent } from '../../shared/modals/subscription-modal/subscription-modal.component';
+import { SuccessModalComponent } from '../../shared/modals/success-modal/success-modal.component';
 
 type Operator = '+' | '-' | 'x' | '÷' | '%';
 
@@ -9,7 +10,7 @@ type Operator = '+' | '-' | 'x' | '÷' | '%';
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [CommonModule, SharedModule, SubscriptionModalComponent],
+  imports: [CommonModule, SharedModule, SubscriptionModalComponent, SuccessModalComponent],
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.sass']
 })
@@ -17,6 +18,7 @@ export class CalculatorComponent {
   expression = '';
   display = '0';
   premiumOpen = false;
+  successOpen = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -61,6 +63,11 @@ export class CalculatorComponent {
     this.premiumOpen = true;
     this.cdr.detectChanges();
     // La operación se desactiva - solo se abre el modal premium
+  }
+
+  onSubscribed() {
+    this.premiumOpen = false;
+    this.successOpen = true;
   }
 
   private commitCurrent() {

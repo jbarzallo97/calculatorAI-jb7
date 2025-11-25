@@ -1,24 +1,131 @@
-<!-- Template corregido para subscription-modal.component.html -->
 <div
   *ngIf="open"
   class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
   (click)="onOverlayClick($event)"
 >
   <div
-    class="w-full max-w-xl rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl p-8 text-white relative overflow-hidden"
+    class="w-full max-w-5xl rounded-2xl bg-zinc-900/90 border border-white/10 shadow-2xl text-white relative overflow-hidden"
     (click)="$event.stopPropagation()"
   >
     <!-- FONDO CON GLOBO Y ESTRELLAS -->
     <div class="absolute inset-0 z-0 opacity-60 pointer-events-none">
       <app-globe-scene></app-globe-scene>
-      <!-- Gradiente opcional para móviles -->
-      <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-zinc-900/90 md:hidden"></div>
     </div>
 
-    <!-- CONTENIDO DEL MODAL (debe estar encima) -->
-    <div class="relative z-10">
-      <h2 class="text-2xl font-bold">Modal Premium</h2>
-      <p class="text-white/70 mt-2 text-sm">Contenido del modal</p>
+    <!-- Botón de cerrar -->
+    <button
+      (click)="closed.emit()"
+      class="absolute top-4 right-4 z-20 text-white/60 hover:text-white transition-colors"
+      aria-label="Cerrar modal"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- CONTENIDO DEL MODAL -->
+    <div class="relative z-10 p-8 grid md:grid-cols-2 gap-8">
+      <!-- Sección izquierda: Características y Precio -->
+      <div class="space-y-6">
+        <!-- Icono de corona y título -->
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">👑</span>
+          <h2 class="text-3xl font-bold">Upgrade to CalcPro<br />AI Premium</h2>
+        </div>
+
+        <p class="text-white/70 text-sm">
+          Unlock real-time calculations and advanced features
+        </p>
+
+        <!-- Tarjetas de características -->
+        <div class="space-y-3">
+          <div class="feature">
+            <div class="flex items-start gap-3">
+              <span class="text-xl">⚡</span>
+              <div>
+                <b>Instant Results</b><br />
+                <span class="text-white/60 text-sm">Real-time calculations</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="flex items-start gap-3">
+              <span class="text-xl">✨</span>
+              <div>
+                <b>AI-Powered</b><br />
+                <span class="text-white/60 text-sm">Quantum computing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="flex items-start gap-3">
+              <span class="text-xl">🛡️</span>
+              <div>
+                <b>Enterprise Security</b><br />
+                <span class="text-white/60 text-sm">Bank-level encryption</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Precio -->
+        <div class="p-4 rounded-xl bg-zinc-800/60 border border-white/10 text-center">
+          <p class="text-3xl font-bold">$99<span class="text-base text-white/60">/month</span></p>
+          <p class="text-sm text-white/50">Billed annually at $1,188/year</p>
+        </div>
+      </div>
+
+      <!-- Sección derecha: Formulario de pago -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold mb-4">Payment Information</h3>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-white/70 mb-1">First Name</label>
+            <input type="text" class="inp" value="Johan" />
+          </div>
+          <div>
+            <label class="block text-sm text-white/70 mb-1">Last Name</label>
+            <input type="text" class="inp" value="Barzallo" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-white/70 mb-1">Email</label>
+          <input type="email" class="inp" value="johan@example.com" />
+        </div>
+
+        <div>
+          <label class="block text-sm text-white/70 mb-1">Card Number</label>
+          <input type="text" class="inp" value="1234 5678 9012 3456" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm text-white/70 mb-1">Expiry Date</label>
+            <input type="text" class="inp" placeholder="MM/YY" />
+          </div>
+          <div>
+            <label class="block text-sm text-white/70 mb-1">CVV</label>
+            <input type="text" class="inp" value="123" />
+          </div>
+        </div>
+
+        <button
+          class="w-full mt-6 py-3 bg-brand hover:brightness-110 transition rounded-lg text-lg font-semibold"
+          (click)="onSubscribeClick()"
+        >
+          Subscribe Now
+        </button>
+
+        <p class="text-xs text-white/50 text-center">
+          By subscribing, you agree to our
+          <a href="#" class="underline">Terms of Service</a> and
+          <a href="#" class="underline">Privacy Policy</a>.
+        </p>
+      </div>
     </div>
   </div>
 </div>

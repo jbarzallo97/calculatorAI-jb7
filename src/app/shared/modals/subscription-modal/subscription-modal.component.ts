@@ -17,9 +17,14 @@ import { GlobeSceneComponent } from '../globe-scene/globe-scene.component';
 export class SubscriptionModalComponent {
   @Input() open = false;
   @Output() closed = new EventEmitter<void>();
+  @Output() subscribed = new EventEmitter<void>();
 
   onOverlayClick(e: MouseEvent): void {
     const t = e.target as HTMLElement | null;
     if (t && t.classList.contains('fixed')) this.closed.emit();
+  }
+
+  onSubscribeClick(): void {
+    this.subscribed.emit();
   }
 }

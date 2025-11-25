@@ -1,14 +1,16 @@
 <!-- Modal Premium -->
-<app-premium-modal [open]="premiumOpen" (closed)="premiumOpen = false"></app-premium-modal>
+<app-premium-modal
+  [open]="premiumOpen"
+  (closed)="premiumOpen = false"
+  (subscribed)="onSubscribed()"
+></app-premium-modal>
+<app-success-modal
+  [open]="successOpen"
+  (closed)="successOpen = false"
+></app-success-modal>
 
 <div class="min-h-screen bg-black bg-radial-pro flex items-start md:items-center justify-center p-6">
   <div class="w-full max-w-[460px] space-y-6">
-    <!-- BOTÓN DE PRUEBA PARA ABRIR MODAL -->
-    <button
-      (click)="openModal()"
-      class="w-full py-4 bg-orange-600 hover:bg-orange-500 text-white text-xl font-bold rounded-xl">
-      ABRIR MODAL PREMIUM
-    </button>
 
     <!-- Encabezado -->
     <div class="text-center">

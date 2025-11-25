@@ -1,0 +1,157 @@
+.card-shell
+  border-radius: 1.3rem
+  isolation: isolate
+  position: relative
+  overflow: hidden
+
+.card-shell::before
+  content: ''
+  position: absolute
+  inset: -150%
+  background: conic-gradient(from 0deg, rgba(59,130,246,.8), rgba(59,130,246,.2), transparent 60%, rgba(59,130,246,.8))
+  animation: border-spin 6s linear infinite
+  z-index: -1
+
+.card-shell::after
+  content: ''
+  position: absolute
+  inset: 3px
+  border-radius: inherit
+  background: rgba(0,0,0,.25)
+  z-index: -1
+
+@keyframes border-spin
+  to
+    transform: rotate(1turn)
+
+.card
+  width: min(22rem, 90vw)
+  min-height: 24rem
+  background: linear-gradient(180deg, rgba(18,19,26,.96) 0%, rgba(7,7,10,.92) 100%)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  border-radius: 1.3rem
+  padding: 2rem 2rem 1.5rem
+  position: relative
+  z-index: 1
+  display: flex
+  flex-direction: column
+  gap: 1.4rem
+  align-items: center
+  text-align: center
+  box-shadow: 0 30px 80px rgba(0,0,0,.55)
+
+.check-wrapper
+  position: relative
+  display: flex
+  justify-content: center
+  margin-bottom: 1rem
+
+.check-glow
+  position: absolute
+  inset: 0
+  border-radius: 999px
+  background: rgba(59, 130, 246, 0.2)
+  filter: blur(30px)
+
+.check-icon
+  width: 80px
+  height: 80px
+  stroke: #3b82f6
+  stroke-width: 4
+  fill: none
+
+.info
+  width: 100%
+
+.info h2
+  text-transform: uppercase
+  letter-spacing: 0.12em
+  font-size: 0.95rem
+  color: #fff
+  margin-bottom: 1rem
+
+.plan-card
+  margin-top: 0.2rem
+  padding: 1.2rem
+  border-radius: 1rem
+  background: rgba(255, 255, 255, 0.03)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  box-shadow: inset 0 0 30px rgba(0,0,0,.25)
+  display: flex
+  flex-direction: column
+  gap: 1rem
+
+.row
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.row.column
+  flex-direction: column
+  align-items: flex-start
+  gap: 0.4rem
+
+.label
+  display: flex
+  align-items: center
+  gap: 0.4rem
+  font-size: 0.85rem
+  color: rgba(255,255,255,.65)
+
+.label svg
+  width: 18px
+  height: 18px
+  stroke: rgba(255,255,255,.55)
+  fill: none
+  stroke-width: 1.5
+
+.value
+  display: flex
+  align-items: center
+  gap: 0.5rem
+
+.badge
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 34px
+  height: 34px
+  border-radius: 0.8rem
+  background: rgba(59,130,246,.25)
+  color: #3b82f6
+  font-weight: 600
+
+.badge.badge-dark
+  background: rgba(255,255,255,.12)
+  color: #fff
+  font-size: 1rem
+
+.badge-icon
+  font-size: 1.1rem
+
+.heading
+  text-transform: uppercase
+  font-weight: 600
+  font-size: 0.78rem
+  letter-spacing: 0.08em
+
+.value-text
+  font-weight: 600
+
+.divider
+  height: 1px
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent)
+
+.next-date
+  font-size: 0.8rem
+  color: rgba(255,255,255,.7)
+  text-align: center
+
+.primary-btn
+  width: 100%
+  margin-top: 1rem
+  padding: 0.8rem
+  border-radius: 0.75rem
+  background: #3b82f6
+  color: #fff
+  font-weight: 600
